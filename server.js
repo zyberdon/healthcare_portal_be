@@ -24,10 +24,11 @@ app.use('/api/auth', authRoutes);
 
 // Define Routes
 app.use('/api/home', require('./routes/api/home'));
-
-app.use('/api/users', require('./routes/api/users'));
+app.use('/api/contact', require('./routes/api/contact'));
 app.use('/api/posts', require('./routes/api/posts'));
 app.use('/api/profile', require('./routes/api/profile'));
+app.use('/api/goals', require('./routes/api/goals'));
+app.use('/api/messages', require('./routes/api/messages'));
 
 
 // Serve static files

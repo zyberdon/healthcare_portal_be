@@ -1,6 +1,7 @@
 const User = require('../models/User');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
+const gravatar = require('gravatar');
 
 // Register a new user
 exports.register = async (req, res) => {
@@ -22,12 +23,20 @@ exports.register = async (req, res) => {
             return res.status(400).json({ msg: 'User already exists' });
         }
 
+        // Get user's gravatar
+        const avatar = gravatar.url(email, {
+            s: '200', // Size
+            r: 'pg', // Rating
+            d: 'mm' // Default
+        });
+
         // Create new user
         user = new User({
             username,
             email,
             phone,
-            password
+            password,
+            avatar
         });
 
         // Hash password
@@ -39,7 +48,7 @@ exports.register = async (req, res) => {
         // Create and sign JWT
         const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, { expiresIn: '1h' });
 
-        res.status(201).json({ token });
+        res.status(201).json({ token, message: 'User registered successfully' });
     } catch (err) {
         console.error(err.message);
         res.status(500).send('Server error');
@@ -71,7 +80,7 @@ exports.login = async (req, res) => {
         // Create and sign JWT
         const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, { expiresIn: '1h' });
 
-        res.json({ token });
+        res.json({ token, message: 'User logged in successfully' });
     } catch (err) {
         console.error(err.message);
         res.status(500).send('Server error');
