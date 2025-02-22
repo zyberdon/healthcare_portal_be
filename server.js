@@ -13,7 +13,7 @@ connectDB();
 // Middleware
 app.use(cors()); // Use the cors middleware
 app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
+app.use(express.urlencoded({ extended: true }));
 
 app.get('/', (req, res) => res.send('API Running'));
 
