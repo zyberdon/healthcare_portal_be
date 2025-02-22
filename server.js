@@ -1,6 +1,7 @@
 const express = require('express');
 const connectDB = require('./config/db');
 const authRoutes = require('./routes/api/auth');
+const cors = require('cors'); // Import the cors package
 const path = require('path');
 require('dotenv').config();
 
@@ -10,6 +11,7 @@ const app = express();
 connectDB();
 
 // Middleware
+app.use(cors()); // Use the cors middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
@@ -21,11 +23,12 @@ app.set('views', path.join(__dirname, 'views'));
 
 // Routes
 app.use('/api/auth', authRoutes);
+app.use('/api/contact', require('./routes/api/contact'));
 
 // Define Routes
 app.use('/api/home', require('./routes/api/home'));
-app.use('/api/contact', require('./routes/api/contact'));
-app.use('/api/posts', require('./routes/api/posts'));
+
+app.use('/api/dashboard', require('./routes/api/dashboard'));
 app.use('/api/profile', require('./routes/api/profile'));
 app.use('/api/goals', require('./routes/api/goals'));
 app.use('/api/messages', require('./routes/api/messages'));

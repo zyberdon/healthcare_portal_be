@@ -4,10 +4,10 @@ const Contact = require('../../models/Contact');
 
 // @route   POST api/contact
 // @desc    Submit contact form
-// @access  Public
+
 router.post('/', async (req, res) => {
     const { username, email } = req.body;
-    console.log("username===", username);
+    
     // Validate input
     if (!username || !email) {
         return res.status(400).json({ msg: 'Please enter all fields' });

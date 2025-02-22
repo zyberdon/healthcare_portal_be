@@ -1,18 +1,14 @@
 const express = require('express');
 const router = express.Router();
-const Update = require('../../models/Home');
+const Dashboard = require('../../models/Dashboard');
 
-// @routes  GET api/home
-// @desc    Fetch health updates
-// @access  public
+// @routes  GET api/dashboard
+// @desc    Fetch health updates dashboard
 
 router.get('/', async (_, res) => {
     try {
-        const updates = await Update.find();
-        const responseObject = {
-            title: 'Health Updates',
-            content: updates
-        };
+        const dashboardData = await Dashboard.find();
+        const responseObject = dashboardData;
         res.json(responseObject);
     } catch (error) {
         res.status(500).json({ message: 'Server error', errorMessage: error.message });
