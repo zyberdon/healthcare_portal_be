@@ -8,6 +8,8 @@ This is a Node.js application built using Express.js that provides user authenti
 - User login with email and password.
 - JWT-based authentication for secure access to protected routes.
 - MongoDB database connection using Mongoose.
+- Contact form submission with username, email, and message.
+- Fetch patient Information on dashboard.
 
 ## Project Structure
 
@@ -20,9 +22,13 @@ my-node-app
 ├── middleware
 │   └── auth.js              # JWT verification middleware
 ├── models
-│   └── User.js              # User model definition
+│   ├── User.js              # User model definition
+│   ├── Contact.js           # Contact model definition
+│   └── Home.js              # Health updates model definition
 ├── routes
-│   └── auth.js              # Authentication routes
+│   ├── auth.js              # Authentication routes
+│   ├── contact.js           # Contact form routes
+│   └── home.js              # Health updates routes
 ├── views
 │   ├── login.ejs            # Login page view
 │   └── register.ejs         # Registration page view
@@ -36,19 +42,20 @@ my-node-app
 
 1. Clone the repository:
 
-   ```
+   ```sh
    git clone <repository-url>
    cd my-node-app
    ```
 
 2. Install the dependencies:
 
-   ```
+   ```sh
    npm install
    ```
 
 3. Create a `.env` file in the root directory and add your MongoDB connection string and JWT secret:
-   ```
+
+   ```sh
    MONGO_URI=<your_mongodb_connection_string>
    JWT_SECRET=<your_jwt_secret>
    ```
@@ -57,7 +64,7 @@ my-node-app
 
 1. Start the server:
 
-   ```
+   ```sh
    npm start
    ```
 
@@ -67,7 +74,9 @@ my-node-app
 
 - `POST /api/auth/register` - Register a new user.
 - `POST /api/auth/login` - Log in an existing user.
-- `POST /api/contact` - Contact normal user.
+- `POST /api/contact` - Submit a contact form.
+- `GET /api/home` - Fetch health updates.
+- `GET /api/patient/dashboard` - Fetch patient Info dashboard.
 
 ## License
 

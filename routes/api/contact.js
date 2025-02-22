@@ -1,11 +1,12 @@
 const express = require('express');
 const router = express.Router();
+const auth = require('../../middleware/auth');
 const Contact = require('../../models/Contact');
 
 // @route   POST api/contact
-// @desc    Submit contact form
-
-router.post('/', async (req, res) => {
+// @desc    Submit non logged user contact form
+// @access  Private
+router.post('/', auth, async (req, res) => {
     const { username, email, message } = req.body;
     
     // Validate input

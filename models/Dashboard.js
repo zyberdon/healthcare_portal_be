@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 const router = express.Router();
 
 // Define a schema and model for the updates
-const dashboardSchema = new mongoose.Schema({
+const patientDashboardSchema = new mongoose.Schema({
     title: String,
     content: Object,
 });
@@ -12,6 +12,6 @@ const dashboardSchema = new mongoose.Schema({
 // Export the router
 module.exports = router;
 
-const Dashboard = mongoose.model('Dashboard', dashboardSchema);
+const PatientDashboard = mongoose.model('PatientDashboard', patientDashboardSchema);
 
-module.exports = Dashboard;
+module.exports = PatientDashboard;

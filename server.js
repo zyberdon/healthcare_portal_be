@@ -1,7 +1,6 @@
 const express = require('express');
 const connectDB = require('./config/db');
-const authRoutes = require('./routes/api/auth');
-const cors = require('cors'); // Import the cors package
+const cors = require('cors');
 const path = require('path');
 require('dotenv').config();
 
@@ -21,17 +20,14 @@ app.get('/', (req, res) => res.send('API Running'));
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 
-// Routes
-app.use('/api/auth', authRoutes);
+// Post Routes
+app.use('/api/auth', require('./routes/api/auth'));
 app.use('/api/contact', require('./routes/api/contact'));
-
-// Define Routes
 app.use('/api/home', require('./routes/api/home'));
-
-app.use('/api/dashboard', require('./routes/api/dashboard'));
-app.use('/api/profile', require('./routes/api/profile'));
-app.use('/api/goals', require('./routes/api/goals'));
-app.use('/api/messages', require('./routes/api/messages'));
+app.use('/api/patient/dashboard', require('./routes/api/dashboard'));
+app.use('/api/patient/profile', require('./routes/api/profile'));
+app.use('/api/patient/willnessgoals', require('./routes/api/goals'));
+app.use('/api/patient/messages', require('./routes/api/messages'));
 
 
 // Serve static files

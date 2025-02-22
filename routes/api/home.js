@@ -1,17 +1,17 @@
 const express = require('express');
 const router = express.Router();
-const Update = require('../../models/Home');
+const auth = require('../../middleware/auth');
+const HospitalHomepage = require('../../models/Home');
 
 // @routes  GET api/home
-// @desc    Fetch health updates
-// @access  public
-
-router.get('/', async (_, res) => {
+// @desc    Fetch Hospital homepage
+// @access  Private
+router.get('/', auth, async (_, res) => {
     try {
-        const updates = await Update.find();
+        const homepageData = await HospitalHomepage.find();
         const responseObject = {
-            title: 'Health Updates',
-            content: updates
+            title: 'Welcome To Hospital Portal',
+            content: homepageData
         };
         res.json(responseObject);
     } catch (error) {

@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 const router = express.Router();
 
 // Define a schema and model for the updates
-const updateSchema = new mongoose.Schema({
+const hospitalHomepageSchema = new mongoose.Schema({
     title: String,
     description: String,
     readmore: String
@@ -13,6 +13,6 @@ const updateSchema = new mongoose.Schema({
 // Export the router
 module.exports = router;
 
-const Update = mongoose.model('Update', updateSchema);
+const HospitalHomepage = mongoose.model('HospitalHomepage', hospitalHomepageSchema);
 
-module.exports = Update;
+module.exports = HospitalHomepage;
