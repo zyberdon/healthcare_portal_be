@@ -35,12 +35,14 @@ my-node-app
 ## Installation
 
 1. Clone the repository:
+
    ```
    git clone <repository-url>
    cd my-node-app
    ```
 
 2. Install the dependencies:
+
    ```
    npm install
    ```
@@ -54,6 +56,7 @@ my-node-app
 ## Usage
 
 1. Start the server:
+
    ```
    npm start
    ```
@@ -64,6 +67,7 @@ my-node-app
 
 - `POST /api/auth/register` - Register a new user.
 - `POST /api/auth/login` - Log in an existing user.
+- `POST /api/contact` - Contact normal user.
 
 ## License
 
