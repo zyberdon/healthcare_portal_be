@@ -22,6 +22,18 @@ const UserSchema = new mongoose.Schema({
         type: String,
         required: true,
         minlength: 6
+    },
+    avatar: {
+        type: String
+    },
+    date: {
+        type: Date,
+        default: Date.now
+    },
+    role: {
+        type: String,
+        enum: ['patient', 'provider'],
+        default: 'patient'
     }
 }, { timestamps: true });
 

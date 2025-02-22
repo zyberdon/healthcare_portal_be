@@ -1,6 +1,6 @@
 const express = require('express');
 const connectDB = require('./config/db');
-const authRoutes = require('./routes/auth');
+const authRoutes = require('./routes/api/auth');
 const path = require('path');
 require('dotenv').config();
 
@@ -21,6 +21,14 @@ app.set('views', path.join(__dirname, 'views'));
 
 // Routes
 app.use('/api/auth', authRoutes);
+
+// Define Routes
+app.use('/api/home', require('./routes/api/home'));
+
+app.use('/api/users', require('./routes/api/users'));
+app.use('/api/posts', require('./routes/api/posts'));
+app.use('/api/profile', require('./routes/api/profile'));
+
 
 // Serve static files
 app.use(express.static(path.join(__dirname, 'public')));
