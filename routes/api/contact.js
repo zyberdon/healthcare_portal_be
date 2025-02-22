@@ -6,10 +6,10 @@ const Contact = require('../../models/Contact');
 // @desc    Submit contact form
 
 router.post('/', async (req, res) => {
-    const { username, email } = req.body;
+    const { username, email, message } = req.body;
     
     // Validate input
-    if (!username || !email) {
+    if (!username || !email || !message) {
         return res.status(400).json({ msg: 'Please enter all fields' });
     }
 
@@ -17,7 +17,8 @@ router.post('/', async (req, res) => {
         // Create new contact submission
         const newContact = new Contact({
             username,
-            email
+            email,
+            message
         });
 
         const contact = await newContact.save();
