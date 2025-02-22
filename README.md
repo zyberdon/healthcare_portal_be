@@ -29,9 +29,6 @@ my-node-app
 │   ├── auth.js              # Authentication routes
 │   ├── contact.js           # Contact form routes
 │   └── home.js              # Health updates routes
-├── views
-│   ├── login.ejs            # Login page view
-│   └── register.ejs         # Registration page view
 ├── .env                      # Environment variables
 ├── package.json              # Project dependencies and scripts
 ├── server.js                 # Entry point of the application
